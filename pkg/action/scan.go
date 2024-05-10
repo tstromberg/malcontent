@@ -68,9 +68,16 @@ func scanSinglePath(ctx context.Context, c Config, yrs *yara.Rules, path string)
 		return &bincapz.FileReport{Skipped: "data file"}, nil
 	}
 
-	if err := yrs.ScanFile(path, 0, 0, &mrs); err != nil {
+	f, err := os.Open(path)
+	if err != nil {
 		logger.Info("skipping", slog.Any("error", err))
-		return &bincapz.FileReport{Path: path, Error: fmt.Sprintf("scanfile: %v", err)}, nil
+		return &bincapz.FileReport{Path: path, Error: fmt.Sprintf("open: %v", err)}, nil
+	}
+	defer f.Close()
+
+	if err := yrs.ScanFileDescriptor(f.Fd(), 0, 0, &mrs); err != nil {
+		logger.Info("skipping", slog.Any("error", err))
+		return &bincapz.FileReport{Path: path, Error: fmt.Sprintf("scan: %v", err)}, nil
 	}
 
 	fr, err := report.Generate(ctx, path, mrs, c.IgnoreTags, c.MinResultScore)
