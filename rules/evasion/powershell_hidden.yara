@@ -3,6 +3,7 @@ rule powershell_hidden_short : high {
   meta:
     description = "Runs powershell with a hidden command"
     hash_2023_Sysrv_Hello_sys_x86_64 = "cd784dc1f7bd95cac84dc696d63d8c807129ef47b3ce08cd08afb7b7456a8cd3"
+    hash_2024_reverse_shells_powershell_1 = "927dbf8e34afe2ca1e73bb4bf1f2072149c0426654a225620711f3a22b1427e6"
   strings:
     $ps = "powershell" ascii wide nocase
     $hidden = " -w hidden " ascii wide nocase

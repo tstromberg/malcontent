@@ -41,6 +41,9 @@ rule python_pty_spawner : high {
   meta:
     ref1 = "https://juggernaut-sec.com/docker-breakout-lpe/"
     ref2 = "https://www.mandiant.com/resources/blog/barracuda-esg-exploited-globally"
+    hash_2024_reverse_shells_python_1 = "b5274df0c7d9931e78e49bfbc20aff6f88dfa50bad3b561aeeca360769b3c375"
+    hash_2024_reverse_shells_python_2 = "72c99ffc00239164962cd959e300eeaa6e003f49ab4e69b4f1e1fa03782b49fc"
+    hash_2024_reverse_shells_python_5 = "29c4759afe70f6b0df4951a8d76bfcee5ab9c88c7512f1f3135355f20e392c31"
   strings:
     $pty_spawn_bash = /pty.spawn\(\"\/bin\/[\w\" -\)]{,16}/
   condition:
