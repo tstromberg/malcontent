@@ -31,6 +31,8 @@ function update_dep() {
 	local tmpdir=$(mktemp -d)
 	local rel="unknown"
 
+	mkdir -p "${kind}"
+
 	case $kind in
 	YARAForge)
 		rel=$(latest_github_release YARAHQ/yara-forge)
@@ -44,6 +46,16 @@ function update_dep() {
 		popd || exit 1
 		find "${tmpdir}" \( -name "*.yar*" -o -name "*LICENSE*" \) -print -exec cp {} "${kind}" \;
 		;;
+	eset)
+		git clone https://github.com/eset/malware-ioc.git "${tmpdir}"
+		pushd "${tmpdir}" || exit 1
+		rel="$(git rev-parse head)"
+		popd || exit 1
+		cp -Rp ${tmpdir}/* "${kind}"
+		find eset -type f -a \! \( -name LICENSE -o -name "*.yar*" \) -delete
+		find eset -type d -delete
+		find eset -type l -delete
+		;;
 	threat_hunting)
 		rel=$(latest_github_release mthcht/ThreatHunting-Keywords-yara-rules)
 		curl -L -o "${tmpdir}/keywords.zip" "https://github.com/mthcht/ThreatHunting-Keywords-yara-rules/archive/refs/tags/${rel}.zip"
@@ -55,7 +67,7 @@ function update_dep() {
 		;;
 	esac
 
-	fixup_rules ${kind}/*.yar* # nolint
+	fixup_rules ${kind}/*.yar* ${kind}/*/*.yar # nolint
 	echo "${rel}" >"${kind}/RELEASE"
 	echo "updated ${kind} to ${rel}"
 }

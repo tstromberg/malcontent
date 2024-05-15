@@ -50,6 +50,7 @@ var rulesWithWarnings = map[string]bool{
 	"hardcoded_ip_port":                     true,
 	"systemd_no_comments_or_documentation":  true,
 	"sleep_and_background":                  true,
+	"opaque_linux_shlib":                    true,
 	"RDPassSpray_offensive_tool_keyword":    false,
 	"nmap_offensive_tool_keyword":           false,
 	"DynastyPersist_offensive_tool_keyword": false,
