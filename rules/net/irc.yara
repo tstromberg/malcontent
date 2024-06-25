@@ -1,3 +1,4 @@
+
 rule irc_c_format : high {
   meta:
     pledge = "inet"
@@ -18,18 +19,21 @@ rule irc_protocol : high {
   meta:
     pledge = "inet"
     description = "Uses IRC (Internet Relay Chat"
-	credit = "Initially ported from https://github.com/jvoisin/php-malware-finder"
+    credit = "Initially ported from https://github.com/jvoisin/php-malware-finder"
+    hash_2023_Linux_Malware_Samples_3059 = "305901aa920493695729132cfd20cbddc9db2cf861071450a646c6a07b4a50f3"
+    hash_2023_Linux_Malware_Samples_3668 = "3668b167f5c9083a9738cfc4bd863a07379a5b02ee14f48a10fb1240f3e421a6"
+    hash_2023_Linux_Malware_Samples_3993 = "3993bc5c3cdfe470fab6f6b932a7e741630f0212a7f18249a61123e3b324edef"
   strings:
-	$join = "JOIN" fullword
-	$mode = "MODE" fullword
-	$nick = "NICK" fullword
-	$notice = "NOTICE" fullword
-	$part = "PART" fullword
-	$pass = "PASS" fullword
-	$ping = "PING" fullword
-	$pong = "PONG" fullword
-	$privmsg = "PRIVMSG" fullword
-	$user = "USER" fullword
+    $join = "JOIN" fullword
+    $mode = "MODE" fullword
+    $nick = "NICK" fullword
+    $notice = "NOTICE" fullword
+    $part = "PART" fullword
+    $pass = "PASS" fullword
+    $ping = "PING" fullword
+    $pong = "PONG" fullword
+    $privmsg = "PRIVMSG" fullword
+    $user = "USER" fullword
   condition:
     $nick and $user and 2 of them
 }

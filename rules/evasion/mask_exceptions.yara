@@ -4,15 +4,14 @@ private rule pythonSetup {
   strings:
     $i_distutils = "from distutils.core import setup"
     $i_setuptools = "from setuptools import setup"
-	$setup = "setup("
-
-	$not_setup_example = ">>> setup("
-	$not_setup_todict = "setup(**config.todict()"
-	$not_import_quoted = "\"from setuptools import setup"
-	$not_setup_quoted = "\"setup(name="
-	$not_distutils = "from distutils.errors import"
+    $setup = "setup("
+    $not_setup_example = ">>> setup("
+    $not_setup_todict = "setup(**config.todict()"
+    $not_import_quoted = "\"from setuptools import setup"
+    $not_setup_quoted = "\"setup(name="
+    $not_distutils = "from distutils.errors import"
   condition:
-    filesize < 128KB and $setup and any of ($i*) and none of ($not*)
+    filesize < 131072 and $setup and any of ($i*) and none of ($not*)
 }
 
 rule py_no_fail : notable {
@@ -36,15 +35,18 @@ rule setuptools_no_fail : suspicious {
 }
 
 rule php_disable_errors : medium {
-    meta:
-        description = "PHP code that disables error reporting"
-    strings:
-        $err_rep = "error_reporting(0)"
-        $log_errs = /ini_set\(\Wlog_errors\W{0,4}0/
-        $display_0 = /ini_set\(\Wdisplay_errors\W{0,4}0/
-        $error_log = /ini_set\(\Werror_log\W{0,4}NULL/
-        $display_off = /ini_set\(\Wdisplay_errors\W{0,4}Off/
-        $display_false = /ini_set\(\Wdisplay_errors\W{0,4}FALSE/
-    condition:
-        1 of them
+  meta:
+    description = "PHP code that disables error reporting"
+    hash_2024_2024_Inull_Studio_err = "5dbab6891fefb2ba4e3983ddb0d95989cf5611ab85ae643afbcc5ca47c304a4a"
+    hash_2024_2024_Inull_Studio_godzilla_xor_base64 = "699c7bbf08d2ee86594242f487860221def3f898d893071426eb05bec430968e"
+    hash_2024_2024_S3RV4N7_SHELL_crot = "2332fd44e88a571e821cf2d12bab44b45e503bc705d1f70c53ec63a197e4bb1a"
+  strings:
+    $err_rep = "error_reporting(0)"
+    $log_errs = /ini_set\(\Wlog_errors\W{0,4}0/
+    $display_0 = /ini_set\(\Wdisplay_errors\W{0,4}0/
+    $error_log = /ini_set\(\Werror_log\W{0,4}NULL/
+    $display_off = /ini_set\(\Wdisplay_errors\W{0,4}Off/
+    $display_false = /ini_set\(\Wdisplay_errors\W{0,4}FALSE/
+  condition:
+    1 of them
 }

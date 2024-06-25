@@ -1,3 +1,4 @@
+
 rule system : medium {
   meta:
     description = "execute a shell command"
@@ -16,20 +17,26 @@ rule php_shell_exec : medium {
   meta:
     description = "execute a shell command"
     syscalls = "fork,execl"
+    hash_2024_2024_sagsooz = "9f1821dbc40edebf4291abb64abc349c3fdf75eece9820c67ea00adf1a25aed4"
+    hash_2024_2024_tobiasGuta_webshell = "d15702abe161740d17d4ba72f38cd1fa38ae2821ebc495f54d35452149db0350"
+    hash_2023_0xShell_0xShellori = "506e12e4ce1359ffab46038c4bf83d3ab443b7c5db0d5c8f3ad05340cb09c38e"
   strings:
     $ref = /shell_exec[\(\$\w\)]{0,16}/
   condition:
-	$ref
+    $ref
 }
 
 rule php_shell_exec_hmm : high {
   meta:
     description = "execute a shell command"
     syscalls = "fork,execl"
+    hash_2024_2024_sagsooz = "9f1821dbc40edebf4291abb64abc349c3fdf75eece9820c67ea00adf1a25aed4"
+    hash_2024_2024_tobiasGuta_webshell = "d15702abe161740d17d4ba72f38cd1fa38ae2821ebc495f54d35452149db0350"
+    hash_2023_0xShell_0xShellori = "506e12e4ce1359ffab46038c4bf83d3ab443b7c5db0d5c8f3ad05340cb09c38e"
   strings:
     $ref = /shell_exec[\(\$\w\)]{0,16}/
-	$not_this = "shell_exec($this->"
-	$not_diff = "diff" fullword
+    $not_this = "shell_exec($this->"
+    $not_diff = "diff" fullword
   condition:
-	$ref and none of ($not*)
+    $ref and none of ($not*)
 }

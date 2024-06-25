@@ -35,6 +35,7 @@ rule macos_platform_check : medium {
     ref = "https://developer.apple.com/documentation/os/1524245-os_release"
     hash_2024_Downloads_0f66 = "0f66a4daba647486d2c9d838592cba298df2dbf38f2008b6571af8a562bc306c"
     hash_2024_Downloads_0f66 = "0f66a4daba647486d2c9d838592cba298df2dbf38f2008b6571af8a562bc306c"
+    hash_2024_2024_LightSpy_dropper = "4b973335755bd8d48f34081b6d1bea9ed18ac1f68879d4b0a9211bbab8fa5ff4"
   strings:
     $ref = "isPlatformOrVariantPlatformVersionAtLeast" fullword
     $ref2 = "/System/Library/CoreServices/SystemVersion.plist" fullword

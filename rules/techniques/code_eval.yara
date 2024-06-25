@@ -41,19 +41,18 @@ rule shell_eval : medium {
 rule php_create_function_no_args : high {
   meta:
     description = "dynamically creates PHP functions without arguments"
+    hash_2024_2024_malcure_simple = "b52dd01d1f1416820108af0be32067e8990e076bf8f917a40a61c919e89e5551"
   strings:
-	$val = /create_function\([\'\"]{2},\$/
+    $val = /create_function\([\'\"]{2},\$/
   condition:
-	any of them
+    any of them
 }
 
 rule php_at_eval : critical {
   meta:
     description = "evaluates code in a way that suppresses errors"
   strings:
-	$at_eval = /@eval\s{0,8}\(.{0,32}/
+    $at_eval = /@eval\s{0,8}\(.{0,32}/
   condition:
-	any of them
+    any of them
 }
-
-

@@ -55,6 +55,8 @@ rule perl_system : notable {
     syscall = "execve"
     pledge = "exec"
     description = "executes external programs"
+    hash_1979_FruitFly_B_fpsaud = "befa9bfe488244c64db096522b4fad73fc01ea8c4cd0323f1cbdee81ba008271"
+    hash_2023_Win_Trojan_Perl_9aed = "9aed7ab8806a90aa9fac070fbf788466c6da3d87deba92a25ac4dd1d63ce4c44"
   strings:
     $system = /system\([\"\'\w\ \-\)\/]{0,64}/
     $perl = "perl" fullword

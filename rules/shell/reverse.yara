@@ -40,10 +40,13 @@ rule perl_reverse_shell : critical {
 }
 
 rule reverse_shell_ref : high {
-	meta:
-		description = "references a reverse shell"
-	strings:
-	    $ = /(r[e3]v[e3]rs[e3]|w[3e]b|cmd)\s*sh[e3]ll/ nocase
-	condition:
-		any of them
+  meta:
+    description = "references a reverse shell"
+    hash_2024_2024_Kaiji_eight_nebraska_autumn_illinois = "38edb3ab96a6aa6c3f4de3590dfb63ca44ddf29d5579ef3b12de326c86145537"
+    hash_2024_2024_sagsooz = "9f1821dbc40edebf4291abb64abc349c3fdf75eece9820c67ea00adf1a25aed4"
+    hash_2024_2024_sagsooz_bestmini = "a14563aaa8d069d2094709d1e0932a76d4c500f45c5ecde213565973e16b9e74"
+  strings:
+    $ = /(r[e3]v[e3]rs[e3]|w[3e]b|cmd)\s*sh[e3]ll/ nocase
+  condition:
+    any of them
 }
