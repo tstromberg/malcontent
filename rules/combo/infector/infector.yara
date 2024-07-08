@@ -54,3 +54,5 @@ rule fake_ekploit_elf_infector : critical {
   condition:
     filesize < 40KB and elf_infector and any of ($e*) and any of ($s*)
 }
+
+rule copy_to_usr_bin : 

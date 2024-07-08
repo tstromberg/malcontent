@@ -63,6 +63,15 @@ rule python_exec_near_get : critical {
     all of them and math.abs(@requests - @exec) <= 32
 }
 
+rule python_exec_oneliner : critical {
+	meta:
+		description = "executes code from remote content"
+	strings:
+		$ref = /exec\(\w{1,8}\.urlopen\([\w\"\.\:\/\?]{1,128}\)\.read\(\)\)/
+	condition:
+		$ref
+}
+
 rule python_eval_near_get : critical {
   meta:
     description = "Executes code from encrypted content"

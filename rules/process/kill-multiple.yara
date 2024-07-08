@@ -6,6 +6,7 @@ rule sigkill_multiple : medium {
     hash_2023_Downloads_f864 = "f864922f947a6bb7d894245b53795b54b9378c0f7633c521240488e86f60c2c5"
   strings:
     $s_xargs_kill_9 = "xargs kill -9"
+    $s_xargs_I_kill_9 = "xargs -I % kill -9"
     $s_kill_9_backtick = "kill -9 `"
     $s_pkill_9 = "pkill -9"
     $s_kill_9_subshell = "kill -9 $("

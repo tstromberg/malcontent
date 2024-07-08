@@ -43,3 +43,12 @@ rule crontab_danger_path : high {
   condition:
     filesize < 104857600 and any of them
 }
+
+rule crontab_sus : high {
+	meta:
+		description = "makes suspicious changes to cron"
+	strings:
+		$ref = /.{4,32}(\.bashgo|pastebin|onion|bprofr|python|curl|wget).{0,64} \| crontab -/
+	condition:
+		$ref
+}

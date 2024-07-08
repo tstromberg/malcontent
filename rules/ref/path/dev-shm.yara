@@ -3,7 +3,7 @@ rule dev_shm {
   meta:
     description = "references /dev/shm (world writeable)"
   strings:
-    $ref = /\/dev\/shm\/[\%\w\-\/\.]{0,64}/
+    $ref = /\/dev\/shm[\%\w\-\/\.]{0,64}/
   condition:
     any of them
 }
