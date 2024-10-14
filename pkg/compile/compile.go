@@ -91,6 +91,7 @@ var rulesWithWarnings = map[string]bool{
 	"cobaltstrike_offensive_tool_keyword":   false,
 	"amos":                                  true,
 	"echo_decode_bash":                      true,
+	"exfil_libcurl_elf":                     true,
 }
 
 func Recursive(ctx context.Context, fss []fs.FS) (*yara.Rules, error) {

@@ -1,5 +1,5 @@
 
-rule macos_kitchen_sink_binary : medium {
+rule macos_kitchen_sink_binary : medium macos {
   meta:
     hash_2023_KandyKorn_kandykorn = "927b3564c1cf884d2a05e1d7bd24362ce8563a1e9b85be776190ab7f8af192f6"
   strings:
@@ -106,4 +106,33 @@ rule listens_and_executes : medium {
     $not_usage = "Usage:"
   condition:
     all of ($f*) and none of ($not*)
+}
+
+rule tiny_elf_backdoor : high {
+	meta:
+		description = "possible tiny ELF backdoor"
+		hash = "205ef784510075cb75fa24f729bd2eef2c4da22e817fd188ff52211bb3217719"
+	strings:
+		$libc_so_6 = "libc.so.6" fullword
+		$socket = "socket" fullword
+		$exit = "exit" fullword
+		$connect = "connect" fullword
+		$send = "send" fullword
+		$fexecve = "fexecve" fullword
+		$recv = "recv" fullword
+		$inet_addr = "inet_addr" fullword
+		$setsockopt = "setsockopt" fullword
+		$realpath = "realpath" fullword
+		$gethostbyname = "gethostbyname" fullword
+		$close = "close" fullword
+		$sleep = "sleep" fullword
+		$syscall = "syscall" fullword
+		$access = "access" fullword
+		$__libc_start_main = "__libc_start_main" fullword
+		$setenv = "setenv" fullword
+		$write = "write" fullword
+		$__environ = "__environ" fullword
+		$main = "main" fullword
+	condition:
+		filesize < 20KB and any of them
 }
