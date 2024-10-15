@@ -81,6 +81,7 @@ net/http_proxy: low
 net/icmp: medium
 net/ip/parse: medium
 net/sendfile: low
+net/sftp: medium
 net/socket/connect: medium
 net/socket/listen: low
 net/socket/local/address: low

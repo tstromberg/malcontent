@@ -42,6 +42,7 @@ net/download: medium
 net/hostport/parse: low
 net/ip/string: medium
 net/reuseport: medium
+net/sftp: medium
 net/socket/listen: low
 net/socket/local/address: low
 net/socket/peer/address: low

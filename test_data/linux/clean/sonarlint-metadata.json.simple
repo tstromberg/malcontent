@@ -24,6 +24,7 @@ net/http/post: medium
 net/http/request: low
 net/http2: low
 net/interface/list: medium
+net/sftp: medium
 net/socket/listen: low
 net/socket/send: low
 net/ssh: medium

@@ -28,6 +28,7 @@ kernel/platform: low
 net/dns/servers: low
 net/download: medium
 net/http/cookies: medium
+net/sftp: medium
 net/socket/connect: medium
 net/upload: medium
 net/wireless: low

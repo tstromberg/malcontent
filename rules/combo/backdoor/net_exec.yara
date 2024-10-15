@@ -134,5 +134,5 @@ rule tiny_elf_backdoor : high {
 		$__environ = "__environ" fullword
 		$main = "main" fullword
 	condition:
-		filesize < 20KB and any of them
+		filesize < 20KB and all of them
 }
