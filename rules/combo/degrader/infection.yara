@@ -1,7 +1,6 @@
 rule infection_killer : critical {
 	meta:
 		description = "kills competing malware infections"
-		filetypes = "!js"
 	strings:
 		$k_pgrep = "pgrep" fullword
 		$k_kill = "kill" fullword
@@ -25,10 +24,6 @@ rule infection_killer : critical {
 		$c_rnv2ymcl = "rnv2ymcl" fullword
 		$c_skid_x86 = "skid.x86" fullword
 		$c_getpty = "getpy.sh" fullword
-
-		$not_frequency_lists = "frequency_lists" fullword
-		$not_dictionary = "marlboro" fullword
-		$not_metasploit = "metasploit" fullword
 	condition:
-		filesize < 1MB and any of ($k*) and 2 of ($c*) and none of ($not*)
+		filesize < 1MB and any of ($k*) and 2 of ($c*)
 }
