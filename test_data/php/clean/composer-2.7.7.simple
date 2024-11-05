@@ -13,6 +13,7 @@ crypto/aes: low
 data/base64/decode: medium
 data/compression/bzip2: low
 data/compression/gzip: low
+data/compression/lzma: low
 data/embedded/app_manifest: medium
 data/embedded/base64_terms: medium
 data/embedded/base64_url: medium

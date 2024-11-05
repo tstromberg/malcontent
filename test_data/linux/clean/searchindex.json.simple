@@ -7,6 +7,7 @@ credential/keylogger: medium
 credential/password: low
 crypto/file_encrypter: medium
 data/compression/bzip2: low
+data/compression/lzma: low
 data/embedded/html: medium
 data/random/insecure: low
 discover/components/docker: medium
